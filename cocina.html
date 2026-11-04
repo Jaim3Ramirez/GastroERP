@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gastrova | Cocina</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="script.js" defer></script>
+</head>
+<body data-view="cocina">
+  <header class="topbar">
+    <a class="brand" href="index.html">Gastrova</a>
+    <nav><a href="index.html">Punto de venta</a><a class="active" href="cocina.html">Cocina</a><a href="pedidos.html">Pedidos y cobro</a></nav>
+  </header>
+  <main class="page">
+    <div class="page-heading">
+      <div><p class="eyebrow">MÓDULO OPERATIVO</p><h1>Pantalla de cocina</h1><p class="muted">Comandas recibidas y preparación de platillos.</p></div>
+      <span class="status-chip">Kitchen Display System</span>
+    </div>
+    <div class="section-heading"><h2>Comandas activas</h2><button id="actualizarCocina" class="btn btn-secondary">Actualizar</button></div>
+    <div id="listaCocina" class="kitchen-grid"><p class="muted">Cargando comandas...</p></div>
+  </main>
+  <footer>Gastrova · Sistema de gestión gastronómica</footer>
+</body>
+</html>

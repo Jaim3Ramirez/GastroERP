@@ -1,0 +1,9 @@
+[
+  {"id": 1, "nombre": "Hamburguesa clásica", "precio": 95, "categoria": "Hamburguesas", "tiempoEstimado": 12},
+  {"id": 2, "nombre": "Hamburguesa especial", "precio": 125, "categoria": "Hamburguesas", "tiempoEstimado": 15},
+  {"id": 3, "nombre": "Pizza pepperoni", "precio": 145, "categoria": "Pizzas", "tiempoEstimado": 18},
+  {"id": 4, "nombre": "Ensalada César", "precio": 85, "categoria": "Ensaladas", "tiempoEstimado": 8},
+  {"id": 5, "nombre": "Papas a la francesa", "precio": 55, "categoria": "Complementos", "tiempoEstimado": 7},
+  {"id": 6, "nombre": "Agua de horchata", "precio": 35, "categoria": "Bebidas", "tiempoEstimado": 2},
+  {"id": 7, "nombre": "Refresco", "precio": 30, "categoria": "Bebidas", "tiempoEstimado": 2}
+]

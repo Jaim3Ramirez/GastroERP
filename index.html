@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gastrova | Punto de venta</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="script.js" defer></script>
+</head>
+<body data-view="mesero">
+  <header class="topbar">
+    <a class="brand" href="index.html">Gastrova</a>
+    <nav>
+      <a class="active" href="index.html">Punto de venta</a>
+      <a href="cocina.html">Cocina</a>
+      <a href="pedidos.html">Pedidos y cobro</a>
+    </nav>
+  </header>
+  <main class="page">
+    <div class="page-heading">
+      <div><p class="eyebrow">MÓDULO OPERATIVO</p><h1>Punto de venta</h1><p class="muted">Selecciona los productos para crear una nueva comanda.</p></div>
+      <span class="status-chip">Vista de mesero</span>
+    </div>
+    <div class="pos-layout">
+      <section class="panel">
+        <div class="section-heading"><h2>Menú</h2><input id="buscarPlatillo" class="search" type="search" placeholder="Buscar platillo..."></div>
+        <div id="menu" class="menu-grid"><p class="muted">Cargando menú...</p></div>
+      </section>
+      <aside class="panel cart-panel">
+        <div class="section-heading"><h2>Comanda actual</h2><span id="cantidadCarrito" class="muted">0 productos</span></div>
+        <div id="carrito" class="cart-list"><p class="empty">Aún no agregas productos.</p></div>
+        <div class="totals">
+          <div><span>Subtotal</span><strong id="subtotal">$0.00</strong></div>
+          <div><span>IVA (16%)</span><strong id="iva">$0.00</strong></div>
+          <div class="grand-total"><span>Total</span><strong id="total">$0.00</strong></div>
+        </div>
+        <form id="formPedido" class="order-form">
+          <label>Número de mesa<input id="mesa" type="number" min="1" placeholder="Ej. 4" required></label>
+          <label>Nombre del mesero<input id="mesero" type="text" maxlength="60" placeholder="Nombre del mesero" required></label>
+          <button class="btn btn-primary full" type="submit">Enviar a cocina</button>
+        </form>
+        <p id="mensajePedido" class="message" aria-live="polite"></p>
+      </aside>
+    </div>
+  </main>
+  <footer>Gastrova · Sistema de gestión gastronómica</footer>
+</body>
+</html>

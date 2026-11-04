@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gastrova | Pedidos y cobro</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="script.js" defer></script>
+</head>
+<body data-view="pedidos">
+  <header class="topbar">
+    <a class="brand" href="index.html">Gastrova</a>
+    <nav><a href="index.html">Punto de venta</a><a href="cocina.html">Cocina</a><a class="active" href="pedidos.html">Pedidos y cobro</a></nav>
+  </header>
+  <main class="page">
+    <div class="page-heading">
+      <div><p class="eyebrow">MÓDULO OPERATIVO</p><h1>Seguimiento y cobro</h1><p class="muted">Consulta el avance de las comandas y registra los pagos.</p></div>
+      <span class="status-chip">Vista de mesero / cajero</span>
+    </div>
+    <section class="panel">
+      <div class="section-heading"><h2>Pedidos</h2><button id="actualizarPedidos" class="btn btn-secondary">Actualizar</button></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Comanda</th><th>Mesa</th><th>Mesero</th><th>Fecha</th><th>Estado</th><th>Total</th><th>Acción</th></tr></thead>
+          <tbody id="tablaPedidos"><tr><td colspan="7" class="empty">Cargando pedidos...</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+    <section class="panel history-panel">
+      <h2>Historial de pedidos pagados</h2>
+      <div id="historialPagados" class="muted">Sin pedidos pagados.</div>
+    </section>
+  </main>
+
+  <div id="modalCobro" class="modal" aria-hidden="true">
+    <div class="modal-card">
+      <button id="cerrarModal" class="modal-close" aria-label="Cerrar">×</button>
+      <p class="eyebrow">PROCESAR PAGO</p>
+      <h2>Cobro de comanda <span id="numeroComanda"></span></h2>
+      <p class="pay-total">Total a pagar: <strong id="totalCobro">$0.00</strong></p>
+      <div class="payment-tabs">
+        <button class="payment-tab active" data-method="efectivo">Efectivo</button>
+        <button class="payment-tab" data-method="tarjeta">Tarjeta</button>
+      </div>
+      <form id="formEfectivo" class="payment-form">
+        <label>Monto recibido<input id="montoRecibido" type="number" min="0" step="0.01" placeholder="0.00" required></label>
+        <p class="change-line">Cambio: <strong id="cambio">$0.00</strong></p>
+        <button class="btn btn-primary full" type="submit">Confirmar pago en efectivo</button>
+      </form>
+      <form id="formTarjeta" class="payment-form hidden">
+        <label>Número de tarjeta<input id="numeroTarjeta" type="text" inputmode="numeric" maxlength="19" placeholder="1234 5678 9012 3456"></label>
+        <label>Nombre del titular<input id="nombreTarjeta" type="text" maxlength="80" placeholder="Nombre como aparece en la tarjeta"></label>
+        <div class="form-row">
+          <label>Vencimiento<input id="vencimiento" type="text" maxlength="5" placeholder="MM/AA"></label>
+          <label>CVV<input id="cvv" type="password" inputmode="numeric" maxlength="4" placeholder="123"></label>
+        </div>
+        <button class="btn btn-primary full" type="submit">Confirmar pago con tarjeta</button>
+      </form>
+      <p id="mensajeCobro" class="message" aria-live="polite"></p>
+      <p class="small-note">Prototipo académico: no se realiza ningún cargo bancario real.</p>
+    </div>
+  </div>
+  <footer>Gastrova · Sistema de gestión gastronómica</footer>
+</body>
+</html>
