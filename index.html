@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gastrova | Punto de venta</title>
+  <title>GastroERP | Punto de venta</title>
   <link rel="stylesheet" href="styles.css">
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="script.js" defer></script>
 </head>
 <body data-view="mesero">
   <header class="topbar">
-    <a class="brand" href="index.html">Gastrova</a>
-    <nav>
-      <a class="active" href="index.html">Punto de venta</a>
+    <a class="brand" href="index.html">GastroERP</a>
+    <nav aria-label="Navegación principal">
+      <a class="active" href="index.html" aria-current="page">Punto de venta</a>
       <a href="cocina.html">Cocina</a>
       <a href="pedidos.html">Pedidos y cobro</a>
     </nav>
@@ -24,7 +24,7 @@
     </div>
     <div class="pos-layout">
       <section class="panel">
-        <div class="section-heading"><h2>Menú</h2><input id="buscarPlatillo" class="search" type="search" placeholder="Buscar platillo..."></div>
+        <div class="section-heading"><h2>Menú</h2><input id="buscarPlatillo" class="search" type="search" aria-label="Buscar platillo" placeholder="Buscar platillo..."></div>
         <div id="menu" class="menu-grid"><p class="muted">Cargando menú...</p></div>
       </section>
       <aside class="panel cart-panel">
@@ -44,6 +44,6 @@
       </aside>
     </div>
   </main>
-  <footer>Gastrova · Sistema de gestión gastronómica</footer>
+  <footer>GastroERP · Sistema de gestión gastronómica</footer>
 </body>
 </html>
