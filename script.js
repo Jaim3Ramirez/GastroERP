@@ -33,9 +33,41 @@ function calcularImportes(items) {
   return { subtotal, iva, total: subtotal + iva };
 }
 
+function validarMenu(data) {
+  if (!Array.isArray(data) || !data.length) {
+    return "El menú no contiene platillos. Revisa platillos.json.";
+  }
+
+  const ids = new Set();
+  for (const platillo of data) {
+    if (
+      !Number.isInteger(platillo.id) || ids.has(platillo.id) ||
+      typeof platillo.nombre !== "string" || !platillo.nombre.trim() ||
+      typeof platillo.descripcion !== "string" || !platillo.descripcion.trim() ||
+      typeof platillo.categoria !== "string" || !platillo.categoria.trim() ||
+      !Number.isFinite(platillo.precio) || platillo.precio <= 0 ||
+      !Number.isFinite(platillo.tiempoEstimado) || platillo.tiempoEstimado <= 0
+    ) {
+      return "Hay datos incompletos o inválidos en un platillo de platillos.json.";
+    }
+    ids.add(platillo.id);
+  }
+  return "";
+}
+
+function normalizarTexto(texto) {
+  return texto.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}
+
 function cargarMenu() {
   $.getJSON("platillos.json")
     .done(data => {
+      const error = validarMenu(data);
+      if (error) {
+        menuPlatillos = [];
+        $("#menu").html(`<p class="empty">${escaparHTML(error)}</p>`);
+        return;
+      }
       menuPlatillos = data;
       renderizarMenu(menuPlatillos);
     })
@@ -49,6 +81,8 @@ function renderizarMenu(platillos) {
     <article class="menu-card">
       <span class="category">${escaparHTML(platillo.categoria)}</span>
       <h3>${escaparHTML(platillo.nombre)}</h3>
+      <p class="menu-description">${escaparHTML(platillo.descripcion)}</p>
+      <p class="prep-time">${platillo.tiempoEstimado} min de preparación</p>
       <p class="price">${formatoMoneda(platillo.precio)}</p>
       <button class="btn btn-primary agregar-platillo" data-id="${platillo.id}">Agregar</button>
     </article>
@@ -58,7 +92,7 @@ function renderizarMenu(platillos) {
 
 function renderizarCarrito() {
   if (!carrito.length) {
-    $("#carrito").html('<p class="empty">Aún no agregas productos.</p>');
+    $("#carrito").html('<p class="empty">Aún no agregas platillos.</p>');
   } else {
     const html = carrito.map(item => `
       <div class="cart-item">
@@ -78,7 +112,8 @@ function renderizarCarrito() {
   $("#subtotal").text(formatoMoneda(importes.subtotal));
   $("#iva").text(formatoMoneda(importes.iva));
   $("#total").text(formatoMoneda(importes.total));
-  $("#cantidadCarrito").text(`${carrito.reduce((suma, item) => suma + item.cantidad, 0)} productos`);
+  const cantidad = carrito.reduce((suma, item) => suma + item.cantidad, 0);
+  $("#cantidadCarrito").text(`${cantidad} ${cantidad === 1 ? "platillo" : "platillos"}`);
 }
 
 function iniciarMesero() {
@@ -86,10 +121,11 @@ function iniciarMesero() {
   renderizarCarrito();
 
   $("#buscarPlatillo").on("input", function () {
-    const busqueda = $(this).val().toLowerCase();
+    const busqueda = normalizarTexto($(this).val().trim());
     renderizarMenu(menuPlatillos.filter(item =>
-      item.nombre.toLowerCase().includes(busqueda) ||
-      item.categoria.toLowerCase().includes(busqueda)
+      normalizarTexto(item.nombre).includes(busqueda) ||
+      normalizarTexto(item.descripcion).includes(busqueda) ||
+      normalizarTexto(item.categoria).includes(busqueda)
     ));
   });
 
@@ -185,12 +221,12 @@ function renderizarCocina() {
         boton = '<span class="badge listo">Listo</span>';
       }
       const estadoTexto = item.estado === "preparando"
-        ? `Preparando · ${item.tiempoEstimado} min estimados`
+        ? `Preparando · ${item.tiempoEstimado} ${item.tiempoEstimado === 1 ? "minuto estimado" : "minutos estimados"}`
         : item.estado === "listo" ? "Platillo terminado" : "Pendiente";
       return `<div class="kitchen-item"><div><strong>${item.cantidad} × ${escaparHTML(item.nombre)}</strong><small>${estadoTexto}</small></div>${boton}</div>`;
     }).join("");
     return `<article class="kitchen-card ${pedido.estado === "preparando" ? "preparing" : ""}">
-      <div class="section-heading"><h2>Mesa ${escaparHTML(pedido.mesa)}</h2><span class="badge ${pedido.estado}">${pedido.estado}</span></div>
+      <div class="section-heading"><h2>Mesa ${escaparHTML(pedido.mesa)}</h2><span class="badge ${pedido.estado}">${textoEstado(pedido.estado)}</span></div>
       <p class="order-meta">Comanda #${pedido.id.toString().slice(-6)} · Mesero: ${escaparHTML(pedido.mesero)}</p>
       ${items}
     </article>`;

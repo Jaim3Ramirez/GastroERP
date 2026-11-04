@@ -18,7 +18,7 @@ ARCHIVOS DEL PROYECTO
 ---------------------
 - styles.css: estilos compartidos y diseño adaptable a móviles.
 - script.js: lógica de las vistas, comandas y cobros de demostración.
-- platillos.json: menú de ejemplo; puedes editar sus platillos y precios.
+- platillos.json: menú de cocina mexicana; puedes editar productos, categorías y precios.
 - README.txt: instrucciones y notas del proyecto.
 
 REQUISITOS
@@ -66,6 +66,11 @@ DATOS Y ALMACENAMIENTO
 Los pedidos se guardan localmente en el navegador mediante localStorage, bajo
 la clave "gastrova_pedidos". La clave se conserva para mantener los pedidos ya
 guardados al actualizar el nombre visible de la aplicación.
+
+Cada platillo de platillos.json debe tener un id entero único, nombre,
+descripción, categoría, precio mayor que cero y tiempoEstimado en minutos.
+El punto de venta muestra estos datos y permite buscar por nombre, categoría o
+descripción. Si falta un dato requerido, se mostrará un aviso en el menú.
 
 Las vistas deben abrirse desde el mismo origen, navegador y perfil para
 compartir los pedidos. Este almacenamiento es local: no sincroniza datos entre

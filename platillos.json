@@ -1,9 +1,82 @@
 [
-  {"id": 1, "nombre": "Hamburguesa clásica", "precio": 95, "categoria": "Hamburguesas", "tiempoEstimado": 12},
-  {"id": 2, "nombre": "Hamburguesa especial", "precio": 125, "categoria": "Hamburguesas", "tiempoEstimado": 15},
-  {"id": 3, "nombre": "Pizza pepperoni", "precio": 145, "categoria": "Pizzas", "tiempoEstimado": 18},
-  {"id": 4, "nombre": "Ensalada César", "precio": 85, "categoria": "Ensaladas", "tiempoEstimado": 8},
-  {"id": 5, "nombre": "Papas a la francesa", "precio": 55, "categoria": "Complementos", "tiempoEstimado": 7},
-  {"id": 6, "nombre": "Agua de horchata", "precio": 35, "categoria": "Bebidas", "tiempoEstimado": 2},
-  {"id": 7, "nombre": "Refresco", "precio": 30, "categoria": "Bebidas", "tiempoEstimado": 2}
+  {
+    "id": 1,
+    "nombre": "Tacos al pastor",
+    "descripcion": "Tres tacos con piña, cebolla y cilantro.",
+    "precio": 89,
+    "categoria": "Tacos",
+    "tiempoEstimado": 12
+  },
+  {
+    "id": 2,
+    "nombre": "Tacos de bistec",
+    "descripcion": "Tres tacos de bistec con cebolla y cilantro.",
+    "precio": 99,
+    "categoria": "Tacos",
+    "tiempoEstimado": 14
+  },
+  {
+    "id": 3,
+    "nombre": "Enchiladas verdes",
+    "descripcion": "Tres enchiladas de pollo con salsa verde y crema.",
+    "precio": 118,
+    "categoria": "Platos fuertes",
+    "tiempoEstimado": 18
+  },
+  {
+    "id": 4,
+    "nombre": "Chilaquiles rojos",
+    "descripcion": "Totopos en salsa roja con queso, crema y huevo.",
+    "precio": 105,
+    "categoria": "Platos fuertes",
+    "tiempoEstimado": 15
+  },
+  {
+    "id": 5,
+    "nombre": "Quesadillas de huitlacoche",
+    "descripcion": "Dos quesadillas de maíz con queso y huitlacoche.",
+    "precio": 82,
+    "categoria": "Antojitos",
+    "tiempoEstimado": 12
+  },
+  {
+    "id": 6,
+    "nombre": "Guacamole con totopos",
+    "descripcion": "Guacamole fresco preparado al momento.",
+    "precio": 72,
+    "categoria": "Entradas",
+    "tiempoEstimado": 8
+  },
+  {
+    "id": 7,
+    "nombre": "Frijoles charros",
+    "descripcion": "Frijoles de la casa con tocino y chorizo.",
+    "precio": 64,
+    "categoria": "Acompañamientos",
+    "tiempoEstimado": 10
+  },
+  {
+    "id": 8,
+    "nombre": "Agua de horchata",
+    "descripcion": "Agua fresca de arroz con canela, 500 ml.",
+    "precio": 38,
+    "categoria": "Bebidas",
+    "tiempoEstimado": 2
+  },
+  {
+    "id": 9,
+    "nombre": "Agua de jamaica",
+    "descripcion": "Agua fresca de jamaica, 500 ml.",
+    "precio": 35,
+    "categoria": "Bebidas",
+    "tiempoEstimado": 2
+  },
+  {
+    "id": 10,
+    "nombre": "Refresco",
+    "descripcion": "Refresco embotellado, 355 ml.",
+    "precio": 32,
+    "categoria": "Bebidas",
+    "tiempoEstimado": 2
+  }
 ]
